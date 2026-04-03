@@ -51,8 +51,13 @@ export function listCachedModels(cacheDir?: string): CachedModel[] {
     const snapshots = fs.readdirSync(snapshotsDir);
     if (snapshots.length === 0) continue;
 
-    // Use the most recent snapshot (last directory entry)
-    const latestSnapshot = snapshots[snapshots.length - 1];
+    // Use the most recently modified snapshot directory
+    const latestSnapshot = snapshots
+      .map((s) => ({
+        name: s,
+        mtime: fs.statSync(path.join(snapshotsDir, s)).mtimeMs,
+      }))
+      .sort((a, b) => b.mtime - a.mtime)[0].name;
     const snapshotPath = path.join(snapshotsDir, latestSnapshot);
 
     models.push({ name, org, fullName, snapshotPath });

@@ -10,7 +10,7 @@ export function errorHandler(
   res: Response,
   _next: NextFunction,
 ): void {
-  console.error(`[ERROR] ${req.method} ${req.path}:`, err.message);
+  console.error('[ERROR] %s %s:', req.method, req.path, err.message);
 
   // Determine error format based on the route prefix
   const isAnthropic = req.path.startsWith('/v1/messages');

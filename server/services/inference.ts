@@ -134,11 +134,13 @@ export class InferenceService {
   }
 
   /**
-   * Rough token count estimation (words / 0.75).
-   * In production, use the actual tokenizer.
+   * Rough token count estimation.
+   * Uses ~0.75 words-per-token ratio, a common approximation for English text
+   * in transformer models. In production, use the actual tokenizer.
    */
-  private estimateTokenCount(text: string): number {
-    return Math.ceil(text.split(/\s+/).length / 0.75);
+  estimateTokenCount(text: string): number {
+    const WORDS_PER_TOKEN_RATIO = 0.75;
+    return Math.ceil(text.split(/\s+/).length / WORDS_PER_TOKEN_RATIO);
   }
 }
 

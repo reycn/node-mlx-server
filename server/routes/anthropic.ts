@@ -76,8 +76,8 @@ export function createAnthropicRouter(
         });
 
         // 1. message_start
-        const inputTokens = Math.ceil(
-          messages.map((m) => m.content).join(' ').split(/\s+/).length / 0.75,
+        const inputTokens = inferenceService.estimateTokenCount(
+          messages.map((m) => m.content).join(' '),
         );
         writeSSEEvent(res, 'message_start', {
           type: 'message_start',

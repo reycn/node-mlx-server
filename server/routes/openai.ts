@@ -123,9 +123,8 @@ export function createOpenAIRouter(
 
           // Include usage if requested
           if (request.stream_options?.include_usage) {
-            const promptTokens = Math.ceil(
-              messages.map((m) => m.content).join(' ').split(/\s+/).length /
-                0.75,
+            const promptTokens = inferenceService.estimateTokenCount(
+              messages.map((m) => m.content).join(' '),
             );
             finalChunk.usage = {
               prompt_tokens: promptTokens,
