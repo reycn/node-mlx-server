@@ -1,0 +1,24 @@
+{
+  "name": "@frost-beta/mlx-server",
+  "version": "0.0.1-dev",
+  "description": "OpenAI & Anthropic compatible inference server for MLX",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx index.ts",
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "uuid": "^11.1.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.5.4",
+    "@types/uuid": "^10.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.2"
+  }
+}

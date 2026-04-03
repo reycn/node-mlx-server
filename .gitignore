@@ -1,16 +1,18 @@
 # Compiled files
 /build/
 /dist/
+/server/dist/
 
 # Everything else should keep same with .npmignore
 *.swp
 *.tgz
 
-yarn.lock
+/yarn.lock
 package-lock.json
 npm-debug.log
 yarn-error.log
 /node_modules/
+/server/node_modules/
 
 tsconfig.tsbuildinfo
 /dist-tests/
